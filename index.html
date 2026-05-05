@@ -3,96 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honda CB500X Rally Raid L2 - Venta Santiago</title>
+    <title>Expedition Motorcycles - Venta Santiago</title>
     <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: auto; padding: 20px; background: #f0f2f5; color: #2c3e50; }
-        .card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 25px rgba(0,0,0,0.1); border-top: 8px solid #c62828; }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; max-width: 1100px; margin: auto; padding: 20px; background: #f0f2f5; color: #2c3e50; }
         
-        .header { text-align: center; margin-bottom: 20px; }
-        h1 { color: #c62828; margin: 0; font-size: 2.2em; text-transform: uppercase; }
-        .subtitle { font-size: 1.2em; color: #7f8c8d; margin-top: 5px; }
+        /* Header Section */
+        .main-header { text-align: center; margin-bottom: 40px; padding: 20px; }
+        .main-header h1 { color: #c62828; font-size: 2.5em; margin-bottom: 5px; }
+        .location-badge { background: #37474f; color: white; padding: 6px 15px; border-radius: 50px; font-size: 0.9em; font-weight: bold; }
 
-        .bike-photo { width: 100%; height: auto; border-radius: 8px; margin: 20px 0; display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
-        
-        .price-tag { font-size: 32px; color: #27ae60; font-weight: bold; text-align: center; margin: 20px 0; border: 2px dashed #27ae60; padding: 15px; border-radius: 8px; }
-        .location-badge { background: #37474f; color: white; padding: 10px 20px; border-radius: 50px; display: inline-block; margin-bottom: 20px; font-weight: bold; }
+        /* Bike Cards Layout */
+        .bike-container { display: flex; gap: 25px; margin-bottom: 40px; flex-wrap: wrap; }
+        .bike-card { 
+            background: white; flex: 1; min-width: 340px; padding: 30px; 
+            border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+            border-top: 6px solid #c62828; text-align: center;
+            display: flex; flex-direction: column;
+        }
 
-        .highlight-box { background: #f8f9fa; padding: 25px; border-radius: 8px; border-left: 6px solid #c62828; margin: 20px 0; }
-        
-        .value-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95em; }
-        .value-table td { padding: 12px; border-bottom: 1px solid #eee; }
-        .value-table tr:last-child { font-weight: bold; background: #fdf2f2; color: #b71c1c; font-size: 1.1em; }
-        .currency { text-align: right; }
+        /* FIX: Prevents clipping of the motorcycle profiles */
+        .bike-card img { 
+            width: 100%; 
+            height: auto; 
+            max-height: 450px; 
+            object-fit: contain; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+            background: #fff;
+        }
 
-        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 30px 0; }
-        .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid #ddd; transition: transform 0.2s; }
+        .price-tag { font-size: 28px; color: #27ae60; font-weight: bold; margin: 10px 0; }
         
-        .footer-info { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee; }
-        .btn { background: #c62828; color: white; padding: 18px 45px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 20px; box-shadow: 0 4px 10px rgba(198, 40, 40, 0.3); }
+        .pdf-link { 
+            display: block; color: #c62828; text-decoration: none; font-weight: bold; 
+            margin-bottom: 15px; font-size: 0.85em; background: #fdf2f2; 
+            padding: 8px; border-radius: 6px; transition: 0.2s;
+        }
+        .pdf-link:hover { background: #fae1e1; }
+
+        .btn { 
+            background: #c62828; color: white; padding: 14px 40px; 
+            text-decoration: none; border-radius: 50px; font-weight: bold; 
+            display: inline-block; margin-top: auto; transition: 0.3s;
+        }
+        .btn:hover { background: #b71c1c; transform: translateY(-2px); }
+
+        /* Destination Gallery */
+        .inspiration-footer { margin-top: 60px; padding-top: 30px; border-top: 1px solid #ddd; }
+        .inspiration-footer h3 { text-align: center; color: #7f8c8d; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
         
-        ul.specs { list-style-type: none; padding: 0; }
-        ul.specs li { padding: 5px 0; padding-left: 25px; position: relative; }
-        ul.specs li:before { content: "✓"; position: absolute; left: 0; color: #27ae60; font-weight: bold; }
+        .expedition-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .expedition-grid img { 
+            width: 100%; height: 250px; object-fit: cover; border-radius: 8px; 
+            cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .expedition-grid img:hover { transform: scale(1.02); filter: brightness(1.1); }
+
+        /* Lightbox Modal (Zoom Effect) */
+        .modal { 
+            display: none; position: fixed; z-index: 1000; padding-top: 20px; 
+            left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.9); text-align: center;
+        }
+
+        /* FIX: Prevents zoomed image from going off-screen */
+        .modal-content { 
+            margin: auto; display: block; 
+            width: auto; height: auto; 
+            max-width: 90%; max-height: 85vh; 
+            border-radius: 10px; box-shadow: 0 0 25px rgba(0,0,0,0.5);
+            animation: zoom 0.3s; 
+        }
+
+        @keyframes zoom { from {transform:scale(0.8); opacity: 0;} to {transform:scale(1); opacity: 1;} }
+
+        .close { 
+            position: absolute; top: 15px; right: 35px; color: #fff; 
+            font-size: 50px; font-weight: bold; cursor: pointer; z-index: 1001;
+        }
+
+        .footer-note { text-align: center; margin-top: 60px; color: #bdc3c7; font-size: 0.8em; padding-bottom: 40px; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <div class="header">
-        <div class="location-badge">📍 Providencia, Santiago</div>
-        <h1>Honda CB500X (2020)</h1>
-        <p class="subtitle"><strong>Expedition Build: Rally Raid Level 2</strong></p>
+<header class="main-header">
+    <div class="location-badge">📍 Providencia, Santiago</div>
+    <h1>Motos de Expedición</h1>
+    <p>Preparadas para cruzar fronteras. Una para cada estilo de aventura.</p>
+</header>
+
+<div class="bike-container">
+    <!-- MOTO NEGRO -->
+    <div class="bike-card">
+        <img src="honda-negro1.jpg" alt="Honda CB500X Negro">
+        <h2>Honda CB500X (Negro)</h2>
+        <div class="price-tag">$6.750.000 CLP</div>
+        <a href="Mantenimiento-Negro.pdf" target="_blank" class="pdf-link">📄 Ver Historial de Mantenimiento</a>
+        <a href="detalles-negro.html" class="btn">Ver Detalles Full</a>
     </div>
 
-    <img src="honda.jpg" alt="Honda CB500X Rally Raid" class="bike-photo">
-
-    <div class="price-tag">Precio: $6.750.000 CLP</div>
-
-    <div class="highlight-box">
-        <h3>Estado y Documentación</h3>
-        <p>Moto chilena (patente nacional), papeles al día y revisión técnica 2026 aprobada. Guardada siempre en <strong>estacionamiento subterráneo</strong> en Providencia. Lista para transferencia inmediata.</p>
-    </div>
-
-    <h3>Mantenimiento Riguroso (Bitácora Digital)</h3>
-    <ul class="specs">
-        <li><strong>Aceite y Filtro:</strong> Cambiados cada 5.000 - 8.000 km después de cada viaje.</li>
-        <li><strong>Líquido de Frenos:</strong> Cambiado recientemente a los 30.000 km.</li>
-        <li><strong>Transmisión:</strong> Cadena nueva instalada a los 26.000 km.</li>
-        <li><strong>Servicio:</strong> Mix de atención especializada en <strong>Colvin & Colvin</strong> y mantenimiento preventivo personal.</li>
-    </ul>
-
-    <h3>Equipamiento Instalado (Valor > $2.800 USD)</h3>
-    <table class="value-table">
-        <tr><td>Kit Suspensión Rally Raid Level 2</td><td class="currency">$1.661 USD</td></tr>
-        <tr><td>Protección de Motor (Bash Plate) Rally Raid</td><td class="currency">$361 USD</td></tr>
-        <tr><td>Parrilla Trasera Solve Product Design</td><td class="currency">$240 USD</td></tr>
-        <tr><td>Parrillas para Maletas Blandas (Pannier Racks)</td><td class="currency">$266 USD</td></tr>
-        <tr><td>Atlas Throttle Lock (Control Crucero Mecánico)</td><td class="currency">$155 USD</td></tr>
-        <tr><td>Cubrepuños Barkbusters (Estructura Aluminio)</td><td class="currency">$123 USD</td></tr>
-        <tr><td>Soporte Flexible Quadlock</td><td class="currency">Incluido</td></tr>
-        <tr><td>Protector de Radiador Rally Raid</td><td class="currency">$71 USD</td></tr>
-        <tr><td><strong>Inversión Total en Componentes</strong></td><td class="currency"><strong>$2.877 USD</strong></td></tr>
-    </table>
-
-    <h3>Neumáticos</h3>
-    <ul class="specs">
-        <li><strong>Principal:</strong> Continental TKC80 nuevos en 2026 (~7.000 km de uso).</li>
-        <li><strong>Extra incluido:</strong> Segundo set de neumáticos <strong>Heidenau K60 Scout</strong> (~10.000 km de vida restante).</li>
-    </ul>
-
-    <h3>Galería de Detalles</h3>
-    <div class="gallery">
-        <img src="suspension.jpg" alt="Suspensión Rally Raid L2">
-        <img src="racks.jpg" alt="Parrilla y Equipaje">
-        <img src="protection.jpg" alt="Protección de Motor y Manillas">
-        <img src="tires.jpg" alt="Set de Neumáticos">
-    </div>
-
-    <div class="footer-info">
-        <p>Bitácora de mantenimiento y boletas disponibles para revisión.</p>
-        <a href="mailto:tu-correo@ejemplo.com" class="btn">Contactar al Vendedor</a>
+    <!-- MOTO ROJO -->
+    <div class="bike-card">
+        <img src="honda-rojo1.jpg" alt="Honda CB500X Rojo">
+        <h2>Honda CB500X (Rojo)</h2>
+        <div class="price-tag">$6.750.000 CLP</div>
+        <a href="Mantenimiento-Rojo.pdf" target="_blank" class="pdf-link">📄 Ver Historial de Mantenimiento</a>
+        <a href="detalles-rojo.html" class="btn">Ver Detalles Full</a>
     </div>
 </div>
+
+<div class="inspiration-footer">
+    <h3>¿Adónde quieres ir?</h3>
+    <div class="expedition-grid">
+        <img src="donde1.jpg" alt="Inspiración 1" onclick="openModal(this.src)">
+        <img src="donde2.jpg" alt="Inspiración 2" onclick="openModal(this.src)">
+        <img src="donde3.jpg" alt="Inspiración 3" onclick="openModal(this.src)">
+        <img src="donde4.jpg" alt="Inspiración 4" onclick="openModal(this.src)">
+        <img src="donde5.jpg" alt="Inspiración 5" onclick="openModal(this.src)">
+        <img src="donde6.jpg" alt="Inspiración 6" onclick="openModal(this.src)">
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="myModal" class="modal" onclick="this.style.display='none'">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+</div>
+
+<div class="footer-note">
+    <p>© 2026 • Bitácoras digitales disponibles • Providencia, Santiago</p>
+</div>
+
+<script>
+    // Logic to handle image zoom pop-up
+    function openModal(src) {
+        document.getElementById("myModal").style.display = "block";
+        document.getElementById("img01").src = src;
+    }
+</script>
 
 </body>
 </html>
