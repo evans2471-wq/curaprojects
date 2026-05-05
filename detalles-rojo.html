@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda CB500X Rojo - Detalles de Venta</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: auto; padding: 20px; background: #f0f2f5; color: #2c3e50; }
+        .card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 25px rgba(0,0,0,0.1); border-top: 8px solid #c62828; }
+        
+        .header { text-align: center; margin-bottom: 20px; }
+        h1 { color: #c62828; margin: 0; font-size: 2.2em; text-transform: uppercase; }
+        .subtitle { font-size: 1.2em; color: #7f8c8d; margin-top: 5px; }
+
+        .bike-photo-main { width: 100%; height: auto; border-radius: 8px; margin: 20px 0; display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        
+        .price-tag { font-size: 32px; color: #27ae60; font-weight: bold; text-align: center; margin: 20px 0; border: 2px dashed #27ae60; padding: 15px; border-radius: 8px; }
+        .location-badge { background: #37474f; color: white; padding: 10px 20px; border-radius: 50px; display: inline-block; margin-bottom: 20px; font-weight: bold; }
+
+        .highlight-box { background: #f8f9fa; padding: 25px; border-radius: 8px; border-left: 6px solid #c62828; margin: 20px 0; }
+        
+        /* Gallery for the 6 bike photos */
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 30px 0; }
+        .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid #ddd; }
+        
+        .pdf-box { background: #fdf2f2; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #e57373; margin: 20px 0; }
+        .btn-pdf { color: #c62828; font-weight: bold; text-decoration: none; font-size: 1.1em; }
+
+        .footer-info { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee; }
+        .btn-contact { background: #c62828; color: white; padding: 18px 45px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 20px; }
+        
+        ul.specs { list-style-type: none; padding: 0; }
+        ul.specs li { padding: 5px 0; padding-left: 25px; position: relative; }
+        ul.specs li:before { content: "✓"; position: absolute; left: 0; color: #27ae60; font-weight: bold; }
+        
+        .back-link { display: inline-block; margin-bottom: 20px; color: #7f8c8d; text-decoration: none; font-weight: bold; }
+        .back-link:hover { color: #c62828; }
+
+        /* Small destination strip at the bottom */
+        .mini-destinations { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
+        .mini-destinations img { width: 80px; height: 60px; object-fit: cover; border-radius: 4px; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Volver al Menú Principal</a>
+
+<div class="card">
+    <div class="header">
+        <div class="location-badge">📍 Providencia, Santiago</div>
+        <h1>Honda CB500X - Rojo (2020)</h1>
+        <p class="subtitle"><strong>Rally Raid Level 1 Expedition Build</strong></p>
+    </div>
+
+    <!-- Main Entry Photo -->
+    <img src="honda-rojo1.jpg" alt="Honda CB500X Rojo" class="bike-photo-main">
+
+    <div class="price-tag">Precio: $6.750.000 CLP</div>
+
+    <div class="pdf-box">
+        <a href="Mantenimiento-Rojo.pdf" target="_blank" class="btn-pdf">
+            📄 Descargar Historial de Mantenimiento (PDF)
+        </a>
+    </div>
+
+    <div class="highlight-box">
+        <h3>Estado y Preparación</h3>
+        <p>Configurada para travesías de larga distancia. Al igual que su contraparte negra, pero con la altura de suspensión stock. Esta unidad ha sido mantenida con repuestos originales y mejoras de alta gama para soportar los climas más exigentes de Chile.</p>
+    </div>
+
+    <h3>Galería de la Motocicleta</h3>
+    <div class="gallery">
+        <img src="honda-rojo2.jpg" alt="Detalle Lateral">
+        <img src="honda-rojo3.jpg" alt="Detalle Motor">
+        <img src="honda-rojo4.jpg" alt="Detalle Suspensión">
+        <img src="honda-rojo5.jpg" alt="Detalle Neumáticos">
+        <img src="honda-rojo6.jpg" alt="Detalle Instrumentación">
+        <!-- Reusing a destination photo to show context -->
+        <img src="honda-rojo1.jpg" alt="En Terreno">
+    </div>
+
+    <h3>Equipamiento Destacado</h3>
+    <ul class="specs">
+        <li><strong>Suspensión:</strong> Kit Rally Raid Level 1 Stock height (Totalmente ajustable).</li>
+        <li><strong>Motor:</strong> Protegido con Bash Plate de alta resistencia.</li>
+        <li><strong>Control:</strong> Cubrepuños Barkbusters, defensas y top box.</li>
+        <li><strong>Neumáticos:</strong> Listos para el ripio (TKC80 / Heidenau).</li>
+    </ul>
+
+    <div class="footer-info">
+        <p>Agenda una revisión técnica o visual en Providencia.</p>
+
+        
+        <div class="mini-destinations">
+            <img src="donde2.jpg"> <img src="donde3.jpg"> <img src="donde4.jpg"> <img src="donde5.jpg">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
