@@ -1,5 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
+
+<style>
+  /* The "Modal" background */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    cursor: pointer;
+  }
+
+  /* The actual image in the popup */
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,6 +159,28 @@
     <p>© 2026 • Bitácoras digitales disponibles • Providencia, Santiago</p>
 </div>
 
+<hr style="margin: 40px 0; border: 0; border-top: 1px solid #eee;">
+
+<div style="padding: 20px; background-color: #f9f9f9; border-radius: 8px; font-family: sans-serif;">
+  <h3 style="margin-top: 0; color: #333;">Contact & Viewing</h3>
+  <p>These motorcycles are currently available for viewing and purchase at <strong>Mototraveller</strong> in Santiago:</p>
+  
+  <p style="margin-bottom: 5px;">
+    <strong>Location:</strong><br>
+    <a href="https://www.google.com/maps/search/?api=1&query=Av+Vitacura+9020,+7640323+Vitacura,+Región+Metropolitana,+Chile" target="_blank" style="color: #007bff; text-decoration: none;">
+      Av Vitacura 9020, 7640323 Vitacura,<br>
+      Región Metropolitana, Chile
+    </a>
+  </p>
+
+  <p style="margin-top: 15px;">
+    <strong>Phone / WhatsApp:</strong><br>
+    <a href="tel:+56978779145" style="color: #007bff; text-decoration: none; font-size: 1.1em;">
+      +56 9 7877 9145
+    </a>
+  </p>
+</div>
+
 <script>
     // Logic to handle image zoom pop-up
     function openModal(src) {
@@ -140,6 +188,23 @@
         document.getElementById("img01").src = src;
     }
 </script>
+
+<!-- The Popup Container -->
+<div id="myModal" class="modal" onclick="this.style.display='none'">
+  <img class="modal-content" id="img01">
+</div>
+
+<script>
+  // Find all images on the page and make them clickable
+  document.querySelectorAll('img').forEach(image => {
+    image.onclick = function() {
+      document.getElementById("myModal").style.display = "block";
+      document.getElementById("img01").src = this.src;
+    }
+  });
+</script>
+
+
 
 </body>
 </html>
